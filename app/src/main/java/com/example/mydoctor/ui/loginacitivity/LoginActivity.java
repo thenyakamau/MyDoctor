@@ -4,8 +4,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import androidx.lifecycle.ViewModelProviders;
+
 import com.bumptech.glide.RequestManager;
 import com.example.mydoctor.R;
+import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
@@ -22,6 +25,10 @@ public class LoginActivity extends DaggerAppCompatActivity {
     Drawable logo;
     @Inject
     RequestManager requestManager;
+    @Inject
+    ViewModelProviderFactory providerFactory;
+
+    private  LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,8 @@ public class LoginActivity extends DaggerAppCompatActivity {
         ButterKnife.bind(this);
 
         setLogo();
+
+        loginViewModel = ViewModelProviders.of(this, providerFactory).get(LoginViewModel.class);
 
     }
 
