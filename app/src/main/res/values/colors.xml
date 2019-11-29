@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primarycolor">#3399ff</color>
+    <color name="primaryLightColor">#79c9ff</color>
+    <color name="primaryDarkColor">#006ccb</color>
+    <color name="secondaryColor">#ffcc33</color>
+    <color name="secondaryLightColor">#ffff69</color>
+    <color name="secondaryDarkColor">#c89b00</color>
+    <color name="accent">@color/secondaryColor</color>
+    <color name="primaryTextColor">#212121</color>
+    <color name="secondaryTextColor">#212121</color>
+    <color name="lightTextColor">#9E9E9E</color>
+    <color name="dark_green_text">#FF1E6016</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="div">#B6B6B6</color>
+
+    <!--error colors-->
+    <color name="error">#cc0000</color>
+    <color name="error_box">#FFCCCC</color>
+
+
+    <color name="black_effective">#2a2a2a</color>
+    <color name="shadow">#d0d8dc</color>
+    <color name="transparent">#00000000</color>
+    <color name="translucent_white">#88ffffff</color>
+    <color name="fb">#3b5998</color>
+    <color name="google">#d34836</color>
+
+    <color name="approved">#087f23</color>
+    <color name="partially_approved">#FFBDED81</color>
+    <color name="pending_approval">#ff9800</color> <!--#ffeb3b-->
+    <color name="declined">#f44336</color>
+
+    <color name="white">#ffffff</color>
+    <color name="body_color">#f4f4f4</color>
+    <color name="edittext_tint_color">#AAA9AA</color>
+    <color name="text_color">#D3D3D3</color>
+    <color name="button_bg_color">#FF3366</color>
+    <color name="month_text_color">#F3F2F2</color>
+    <color name="group_item_title_text_color">#2D2D35</color>
+    <color name="menu_item_title_text_color">#6A6A6E</color>
+    <color name="timeline_date_text_color">#CBCBCC</color>
+    <color name="divider_color">#F5F5F6</color>
+
+    <color name="grey">#b1b1b1</color>
+    <color name="dark_blue">#00001a</color>
+
+    <color name="fab_color_pressed">#007787</color>
+    <color name="fab_color_shadow">#44000000</color>
+
+    <color name="sandy_brown">#F4A460</color>
+    <color name="blue_400">#42A5F5</color>
+    <color name="btn_default_light_normal">#00000000</color>
+    <color name="btn_default_light_pressed">#40ffffff</color>
+    <color name="btn_send_normal">#4090DB</color>
+    <color name="btn_send_pressed">#006633</color>
+    <color name="btn_default_shadow">#99000000</color>
+    <color name="btn_context_menu_normal">#ffffff</color>
+    <color name="btn_context_menu_pressed">#40000000</color>
+    <color name="btn_context_menu_text_red">#ff0000</color>
+
+    <color name="text_like_counter">#2b5a83</color>
+
+    <color name="facebook_blue">#3b5998</color>
+
+    <color name="bg_comments">#ffffff</color>
+    <color name="blue">#4090DB</color><!--#0452fa-->
+    <color name="username_color">#145789</color>
+    <color name="follow_button_color">#9f9e9e</color>
+    <color name="btn_default_normal">#999898</color>
+    <color name="yellow">#ffe100</color>
+    <color name="green">#64dd17</color>
+    <color name="dirty_white">#fcf7f7</color>
+    <color name="dark_green">#84b937</color>
+    <color name="bg_msg_from">#e5e7eb</color>
+    <color name="label">#777777</color>
+    <color name="menu_title_color">@color/accent</color>
+
+
+    <color name="step_pager_selected_tab_color">@color/primaryDarkColor</color>
+    <color name="step_pager_selected_last_tab_color">#ff669900</color>
+    <color name="step_pager_next_tab_color">#10000000</color>
+
+    <color name="review_green">#ff669900</color>
+
+    <color name="text_light">#66000000</color>
+
+    <color name="primary_500">#FF8BC34A</color>
+    <color name="black_trans80">#33000000</color>
+    <color name="blue_trans">#3603A9F4</color>
+    <color name="approved_timesheet">#FF8BC34A</color>
+    <color name="success">#47D476</color>
+    <color name="info">#5BC0DE</color>
+    <color name="warning">#ff9800</color>
+    <color name="row_activated">#e0e0e0</color>
+    <color name="subject">#111111</color>
+    <color name="message">#7a7a7a</color>
+    <color name="bg_circle_default">#666666</color>
+    <color name="timestamp">#4285f4</color>
+    <color name="icon_tint_normal">#7a7a7a</color>
+    <color name="background">#F8F7F7</color>
+
+    <color name="light_orange">#f79f1f</color>
+    <color name="blue_300">#4FC3F7</color>
+</resources>

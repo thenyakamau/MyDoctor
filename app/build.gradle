@@ -1,0 +1,206 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+    mavenCentral()
+}
+
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+ext.versionMajor = 1
+ext.versionMinor = 2
+ext.versionPatch = 0
+ext.versionClassifier = null
+ext.isSnapshot = false
+ext.minimumSdkVersion = 19
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.example.mydoctor"
+        minSdkVersion project.ext.minimumSdkVersion
+        targetSdkVersion 29
+        versionCode generateVersionCode() // 190010000
+        versionName generateVersionName() // 1.0.0
+        renderscriptTargetApi 20
+        renderscriptSupportModeEnabled true
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+
+    final SUPPORT_LIBRARY_VERSION = '1.0.0'
+    final RETROFIT_VERSION = '2.4.0'
+    final DAGGER_VERSION = '2.22'
+    final ESPRESSO_VERSION = '3.2.0-alpha02'
+    final RUNNER_VERSION = '1.1.0'
+    final BUTTERKNIFE_VERSION = '10.1.0'
+    //added room version
+    final ROOMDB_VERSION = '1.1.1'
+    final LIVEDATA_VERSION = '1.1.1'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.browser:browser:$SUPPORT_LIBRARY_VERSION"
+    implementation "androidx.palette:palette:$SUPPORT_LIBRARY_VERSION"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    implementation "androidx.cardview:cardview:$SUPPORT_LIBRARY_VERSION"
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+
+    /*RETROFIT Dependencies*/
+    implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION") {
+        exclude module: 'okhttp'
+    }
+
+    /*okhttp3 dependencies*/
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+
+    /*DAGGER for di*/
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"// if you use the support libraries
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    implementation "com.google.android.material:material:$material_version"
+
+    /*ButterKnife */
+    implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    kapt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+
+    /**/
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.colintmiller:simplenosql:0.5.1'
+    implementation 'com.pkmmte.view:circularimageview:1.1'
+    implementation 'io.reactivex:rxandroid:1.1.0'
+
+    /*Glide */
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+    //implementation 'com.github.bumptech.glide:glide:4.4.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    /*custom tools*/
+    implementation 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
+    implementation 'com.github.pwiniars:SlideDateTimePicker:v1.0.8'
+    implementation 'in.unicodelabs.sorbh:kdgaugeview:1.0.0'
+
+    //implementation 'com.tunjid.android-bootstrap:view:3.0.1'
+    implementation 'com.github.stfalcon:smsverifycatcher:0.3.2'
+    implementation 'com.karumi:dexter:5.0.0'
+
+    /*commons-io library*/
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
+    //hdodenhof dependancy
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    //graph view library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
+    /*number picker*/
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
+
+    //Easy permissions for handling Run time permissions
+    implementation 'pub.devrel:easypermissions:0.2.0'
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    /*Adding room persistence dependencies*/
+    implementation "android.arch.persistence.room:runtime:$ROOMDB_VERSION"
+    kapt "android.arch.persistence.room:compiler:$ROOMDB_VERSION"
+    implementation "android.arch.lifecycle:livedata:$LIVEDATA_VERSION"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    //Lottie animations
+    implementation 'com.airbnb.android:lottie:3.1.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+    /*TESTS*/
+
+    /*espresso*/
+    androidTestImplementation("androidx.test.espresso:espresso-core:$ESPRESSO_VERSION") {
+        exclude group: 'javax.inject'
+    }
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
+        exclude group: 'javax.inject'
+        exclude group: 'com.android.support'
+    }
+
+    androidTestImplementation "androidx.test.ext:junit:$RUNNER_VERSION"
+    androidTestImplementation "androidx.test:rules:$RUNNER_VERSION"
+    testImplementation 'junit:junit:4.12'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+
+}
+
+private Integer generateVersionCode() {
+    return ext.minimumSdkVersion * 10000000 + ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+    if (ext.versionClassifier == null && ext.isSnapshot) {
+        ext.versionClassifier = "SNAPSHOT"
+    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifier
+    }
+    return versionName
+}
+
+kapt {
+    generateStubs = true
+}
