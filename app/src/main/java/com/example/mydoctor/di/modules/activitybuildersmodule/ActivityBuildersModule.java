@@ -1,5 +1,6 @@
 package com.example.mydoctor.di.modules.activitybuildersmodule;
 
+import com.example.mydoctor.di.modules.ApiModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.LoginViewModelModule;
 import com.example.mydoctor.ui.loginacitivity.LoginActivity;
 
@@ -12,6 +13,7 @@ public abstract class ActivityBuildersModule {
     @ContributesAndroidInjector(
             modules = {
                     LoginViewModelModule.class,
+                    ApiModule.class,
             }
     )
     abstract LoginActivity contributeLoginActivity();

@@ -59,6 +59,9 @@ dependencies {
     final ROOMDB_VERSION = '1.1.1'
     final LIVEDATA_VERSION = '1.1.1'
     def lifecycle_version = '2.1.0-alpha03'
+    def rxjava_version = '2.1.1'
+    def rxcalladapter_version = '2.5.0'
+    def reactivestreams_version = "1.1.1"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -75,11 +78,16 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
 
     /*RETROFIT Dependencies*/
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version" // Retrofit call adapter
     implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     implementation("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION") {
         exclude module: 'okhttp'
     }
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
     /*okhttp3 dependencies*/
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
@@ -169,6 +177,8 @@ dependencies {
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    // Reactive Streams (convert Observable to LiveData)
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 
     /*TESTS*/
 
