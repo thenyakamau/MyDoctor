@@ -11,6 +11,7 @@ import com.example.mydoctor.ui.loginacitivity.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
+
     private  int SPLASH_RUNTIME = 7000;
 
     @Override
@@ -18,8 +19,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //This is a very less efficient method of moving from a splash activity
        // new Handler().postDelayed(() -> startActivity(new Intent(SplashActivity.this, LoginActivity.class)), SPLASH_RUNTIME);
 
+        //using threads is reliable and more robust especially when using animation
         Thread splash= new Thread(){
             public void run(){
                 try{

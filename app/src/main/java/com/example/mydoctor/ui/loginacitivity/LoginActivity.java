@@ -1,5 +1,6 @@
 package com.example.mydoctor.ui.loginacitivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -8,13 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.RequestManager;
 import com.example.mydoctor.R;
 import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
-import com.example.mydoctor.models.LoginModel;
 import com.example.mydoctor.ui.registeractivity.RegisterActivity;
 
 import javax.inject.Inject;
@@ -44,6 +43,7 @@ public class LoginActivity extends DaggerAppCompatActivity {
     ViewModelProviderFactory providerFactory;
 
     private  LoginViewModel loginViewModel;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +62,44 @@ public class LoginActivity extends DaggerAppCompatActivity {
 
     private void subscribeObservers(){
 
-        loginViewModel.observeUser().observe(this, loginModel -> {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Logging In");
+        progressDialog.setMessage("Loading...");
 
-            if (loginModel!=null){
+        //correct method of passing viewModel data to the activity
+        //Do not pass any context or views to the viewModel treat the activity as a view
+        loginViewModel.observeAuthUser().observe(this, loginModelAuthResource -> {
 
-                Log.d(TAG, "subscribeObservers: "+ loginModel.getLogin().get(0).getEmail());
+            if (loginModelAuthResource!=null){
+
+                switch (loginModelAuthResource.status){
+
+                    case LOADING:
+                        progressDialog.show();
+                        break;
+
+                    case AUTHENTICATED:
+                        progressDialog.dismiss();
+                        if (loginModelAuthResource.data.getMessage().equals("success")){
+
+                            Log.d(TAG, "subscribeObservers: "+loginModelAuthResource.data.getLogin().get(0).getEmail());
+
+                        }
+                        break;
+
+
+                    case ERROR:
+                        progressDialog.dismiss();
+
+                        Log.d(TAG, "subscribeObservers: "+loginModelAuthResource.message);
+
+                        break;
+
+                    case NOT_AUTHENTICATED:
+                        progressDialog.dismiss();
+                        break;
+
+                }
 
             }
 
@@ -77,6 +110,7 @@ public class LoginActivity extends DaggerAppCompatActivity {
     public void setLogo(){
 
         // It is to ease the use for glide by making it a dagger instance
+        //this is a temporary display
         requestManager
                 .load(logo)
                 .into(image_login);
