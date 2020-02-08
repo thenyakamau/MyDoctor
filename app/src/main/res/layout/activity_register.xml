@@ -17,11 +17,20 @@
         android:orientation="vertical"
         android:layout_weight ="0.9">
 
+
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/doctor"
-            android:layout_marginBottom="5dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/add_image"
+            android:id="@+id/register_logo"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:text="Add image"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -88,6 +97,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--Phone Label -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Phone number"
+                        app:boxBackgroundColor="@color/white"
+                        app:endIconDrawable="@drawable/ic_user">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="number" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Password Label-->

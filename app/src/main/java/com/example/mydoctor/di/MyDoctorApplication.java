@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.example.mydoctor.di.components.appcompoment.DaggerAppComponent;
+import com.example.mydoctor.tokenmanager.TokenManager;
 import com.facebook.stetho.Stetho;
 
 import dagger.android.AndroidInjector;
@@ -56,6 +57,12 @@ public class MyDoctorApplication extends DaggerApplication {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null
                 && activeNetwork.isConnectedOrConnecting();
+
+    }
+
+    public TokenManager tokenManager(){
+
+        return TokenManager.getINSTANCE(getSharedPreferences("prefs",MODE_PRIVATE));
 
     }
 

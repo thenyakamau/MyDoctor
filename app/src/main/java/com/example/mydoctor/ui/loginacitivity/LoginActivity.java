@@ -13,7 +13,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.RequestManager;
 import com.example.mydoctor.R;
+import com.example.mydoctor.baseviews.BaseActivity;
 import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
+import com.example.mydoctor.tokenmanager.TokenManager;
 import com.example.mydoctor.ui.registeractivity.RegisterActivity;
 
 import javax.inject.Inject;
@@ -23,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class LoginActivity extends DaggerAppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private static final String TAG = "LoginActivity";
 
@@ -41,6 +43,8 @@ public class LoginActivity extends DaggerAppCompatActivity {
     RequestManager requestManager;
     @Inject
     ViewModelProviderFactory providerFactory;
+    @Inject
+    TokenManager tokenManager;
 
     private  LoginViewModel loginViewModel;
     private ProgressDialog progressDialog;
@@ -80,9 +84,9 @@ public class LoginActivity extends DaggerAppCompatActivity {
 
                     case AUTHENTICATED:
                         progressDialog.dismiss();
-                        if (loginModelAuthResource.data.getMessage().equals("success")){
+                        if (loginModelAuthResource.data != null) {
 
-                            Log.d(TAG, "subscribeObservers: "+loginModelAuthResource.data.getLogin().get(0).getEmail());
+                            tokenManager.saveAcessToken(loginModelAuthResource.data);
 
                         }
                         break;

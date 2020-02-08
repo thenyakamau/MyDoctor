@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.mydoctor.R;
+import com.example.mydoctor.baseviews.BaseActivity;
 import com.example.mydoctor.ui.loginacitivity.LoginActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
 
     private  int SPLASH_RUNTIME = 7000;
@@ -40,4 +41,11 @@ public class SplashActivity extends AppCompatActivity {
         splash.start();
 
     }
+
+    private void loginActivity(){
+
+
+
+    }
+
 }

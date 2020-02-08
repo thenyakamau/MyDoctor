@@ -13,11 +13,16 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.mydoctor.BuildConfig;
 import com.example.mydoctor.R;
 import com.example.mydoctor.di.MyDoctorApplication;
+import com.example.mydoctor.tokenmanager.TokenManager;
 import com.example.mydoctor.utils.Tls12SocketFactory;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -46,7 +51,7 @@ public class AppModule {
     private static final String TAG = "ApiModule";
     private static final String HEADER_PRAGMA = "Pragma";
     private static final String HEADER_CACHE_CONTROL = "Cache-Control" ;
-    private final String BASE_URL = "https://thenyakamau.000webhostapp.com/helpline/";//"https://"; //base url
+    private final String BASE_URL = "https://e4c1b1fc.ngrok.io/laravelmydoctorapi/public/";//"https://"; //base url
     private static final long cacheSize = 10*1024*1024;  //10mb
 
     @Singleton
@@ -82,7 +87,7 @@ public class AppModule {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(myGson()))
                 .client(getNewHttpClient())
                 .build();
     }
@@ -218,6 +223,25 @@ public class AppModule {
 
     }
 
+    @Singleton
+    @Provides
+    public static TokenManager getTokenManager(Application application){
 
+        return MyDoctorApplication.getInstance().tokenManager();
+
+    }
+
+    private Gson myGson(){
+
+        return new GsonBuilder()
+                .enableComplexMapKeySerialization()
+                .serializeNulls()
+                .setDateFormat(DateFormat.LONG)
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .setVersion(1.0)
+                .create();
+
+    }
 
 }

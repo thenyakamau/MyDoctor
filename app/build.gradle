@@ -41,6 +41,41 @@ android {
         }
     }
 
+    flavorDimensions("version")
+    productFlavors
+            {
+
+                doctor {
+
+                    dimension "version"
+                    minSdkVersion 19
+                    applicationId 'ke.co.softyfy.fittie.doctor'
+                    versionCode generateVersionCode() // 190010000
+                    versionName generateVersionName() // 1.0.0
+
+                    //Configure this flavor specific app name published in Play Store
+                    resValue("string", "app_name", "Doctor Center")
+                    buildConfigField("String", 'BASE_URL', '"https://e4c1b1fc.ngrok.io/laravelmydoctorapi/public/"')
+
+                }
+
+                patient {
+
+
+                    dimension "version"
+                    minSdkVersion 19
+                    applicationId 'ke.co.softyfy.fittie.patient'
+                    versionCode generateVersionCode() // 190010000
+                    versionName generateVersionName() // 1.0.0
+
+                    //Configure this flavor specific app name published in Play Store
+                    resValue("string", "app_name", "Health Center")
+                    buildConfigField("String", 'BASE_URL', '"https://e4c1b1fc.ngrok.io/laravelmydoctorapi/public/"')
+
+                }
+
+            }
+
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -78,7 +113,8 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
 
     /*RETROFIT Dependencies*/
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version" // Retrofit call adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
+    // Retrofit call adapter
     implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     implementation("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION") {
@@ -97,7 +133,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
     implementation "com.google.dagger:dagger:$DAGGER_VERSION"
     annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
-    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"// if you use the support libraries
+    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"
+// if you use the support libraries
     annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -179,6 +216,22 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     // Reactive Streams (convert Observable to LiveData)
     implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
+
+    //compression library
+    implementation 'id.zelory:compressor:2.1.0'
+    implementation 'com.github.amanjeetsingh150:ImageZipper:1.3'
+
+    // font awesome library
+    implementation 'info.androidhive:fontawesome:0.0.5'
+
+    //playservices
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    //For Map Activity
+    implementation 'com.google.maps:google-maps-services:0.10.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
 
     /*TESTS*/
 
