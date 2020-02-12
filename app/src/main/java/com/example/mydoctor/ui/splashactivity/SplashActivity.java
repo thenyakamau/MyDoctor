@@ -1,10 +1,7 @@
 package com.example.mydoctor.ui.splashactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.example.mydoctor.R;
 import com.example.mydoctor.baseviews.BaseActivity;
