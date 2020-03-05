@@ -233,6 +233,12 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:0.5'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
 
+    //emoji edittext
+    implementation 'com.vanniktech:emoji-ios:0.6.0'
+
+    //scaledrone
+    implementation 'com.scaledrone:scaledrone-java:0.6.0'
+
     /*TESTS*/
 
     /*espresso*/

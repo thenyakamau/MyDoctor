@@ -1,4 +1,5 @@
 <resources>
     <!--<string name="app_name">MyDoctor</string>-->
     <string name="google_api_key2">your api key here</string>
+    <string name="input_placeholder">Write a message</string>
 </resources>

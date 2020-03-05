@@ -1,12 +1,12 @@
 package com.example.mydoctor.ui.dashboardactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.example.mydoctor.R;
+import com.example.mydoctor.baseviews.BaseActivity;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class DashBoardActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

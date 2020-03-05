@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import com.example.mydoctor.di.components.appcompoment.DaggerAppComponent;
 import com.example.mydoctor.tokenmanager.TokenManager;
 import com.facebook.stetho.Stetho;
+import com.vanniktech.emoji.EmojiManager;
+import com.vanniktech.emoji.ios.IosEmojiProvider;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -30,6 +32,7 @@ public class MyDoctorApplication extends DaggerApplication {
 
         instance = this;
 
+        EmojiManager.install(new IosEmojiProvider());
         Stetho.initializeWithDefaults(this);
     }
 

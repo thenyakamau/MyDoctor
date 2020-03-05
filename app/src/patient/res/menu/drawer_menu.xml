@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="Home"
+            android:id="@+id/_dash_board_home"
+            android:icon="@drawable/ic_home"/>
+
+        <item
+            android:title="Hospitals"
+            android:icon="@drawable/ic_local_hospital"
+            android:id="@+id/_dash_board_hospital"/>
+
+        <item
+            android:title="Maps"
+            android:icon="@drawable/ic_maps"
+            android:id="@+id/_dash_board_map"/>
+
+    </group>
+
+
+
+</menu>
