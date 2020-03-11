@@ -125,7 +125,9 @@ public class AppModule {
         return client;
     }
 
-    private OkHttpClient getNewHttpClient() {
+    @Singleton
+    @Provides
+     OkHttpClient getNewHttpClient() {
 
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .followRedirects(true)

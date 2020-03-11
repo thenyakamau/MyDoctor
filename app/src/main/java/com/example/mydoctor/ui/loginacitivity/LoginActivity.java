@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.RequestManager;
+import com.example.mydoctor.BuildConfig;
 import com.example.mydoctor.R;
 import com.example.mydoctor.baseviews.BaseActivity;
 import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
@@ -23,7 +24,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dagger.android.support.DaggerAppCompatActivity;
 
 public class LoginActivity extends BaseActivity {
 
@@ -87,6 +87,16 @@ public class LoginActivity extends BaseActivity {
                         if (loginModelAuthResource.data != null) {
 
                             tokenManager.saveAcessToken(loginModelAuthResource.data);
+
+                            if (BuildConfig.FLAVOR.equals("patient")) {
+
+                                try {
+                                    Intent intent = new Intent(LoginActivity.this, Class.forName("com.example.mydoctor.ui.dashboardactivity.DashBoardActivity"));
+                                    startActivity(intent);
+                                } catch (ClassNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+                            }
 
                         }
                         break;

@@ -1,4 +1,4 @@
-package com.example.mydoctor.ui.fragments;
+package com.example.mydoctor.ui.fragments.homefragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,22 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mydoctor.R;
 import com.example.mydoctor.baseviews.BaseFragment;
+import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
 public class HomeFragment extends BaseFragment {
+
+    @Inject
+    ViewModelProviderFactory providerFactory;
+
+    private HomeFragmentViewModel homeFragmentViewModel;
 
     @Nullable
     @Override
@@ -30,6 +39,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        homeFragmentViewModel = ViewModelProviders.of(this, providerFactory). get(HomeFragmentViewModel.class);
+
     }
 
     @Override

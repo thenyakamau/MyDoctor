@@ -49,7 +49,7 @@ android {
 
                     dimension "version"
                     minSdkVersion 19
-                    applicationId 'ke.co.softyfy.fittie.doctor'
+                    applicationId 'com.example.mydoctor.doctor'
                     versionCode generateVersionCode() // 190010000
                     versionName generateVersionName() // 1.0.0
 
@@ -64,7 +64,7 @@ android {
 
                     dimension "version"
                     minSdkVersion 19
-                    applicationId 'ke.co.softyfy.fittie.patient'
+                    applicationId 'com.example.mydoctor.patient'
                     versionCode generateVersionCode() // 190010000
                     versionName generateVersionName() // 1.0.0
 

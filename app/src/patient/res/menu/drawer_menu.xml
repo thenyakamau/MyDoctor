@@ -18,6 +18,11 @@
             android:icon="@drawable/ic_maps"
             android:id="@+id/_dash_board_map"/>
 
+        <item
+            android:title="Chats"
+            android:icon="@drawable/ic_message"
+            android:id="@+id/_dash_board_message"/>
+
     </group>
 
 
