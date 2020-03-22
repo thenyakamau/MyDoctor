@@ -1,6 +1,5 @@
 package com.example.mydoctor.ui.dashboardactivity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,9 +15,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mydoctor.R;
 import com.example.mydoctor.baseviews.BaseActivity;
+import com.example.mydoctor.di.firebaseservice.FireBaseService;
 import com.example.mydoctor.ui.fragments.homefragment.HomeFragment;
 import com.example.mydoctor.ui.mapactivity.MapActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +35,11 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
     @BindView(R.id._drawer_dashboard)
     DrawerLayout _draw_layout_dashboard;
 
+    @Inject
+    FireBaseService fireBaseService;
+
     private  HomeFragment homeFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,7 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
 
         _nav_viewer_dashboard.setNavigationItemSelectedListener(this);
         _nav_viewer_dashboard.setCheckedItem(R.id._dash_board_home);
+
 
     }
 
@@ -89,7 +97,6 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
                 return true;
 
         }
-
         _draw_layout_dashboard.closeDrawer(GravityCompat.START);
         return true;
     }

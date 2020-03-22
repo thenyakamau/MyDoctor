@@ -25,6 +25,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name=".di.firebaseservice.FireBaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/doctor" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/blue" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="Your api key here" />
@@ -32,7 +50,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ui.mapactivity.MapActivity"></activity>
+        <activity android:name=".ui.mapactivity.MapActivity" />
         <activity android:name=".ui.cameraactivity.CameraActivity" />
         <activity android:name=".ui.registeractivity.RegisterActivity" />
         <activity android:name=".ui.loginacitivity.LoginActivity" />

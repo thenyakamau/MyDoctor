@@ -3,6 +3,7 @@ package com.example.mydoctor.di.components.appcompoment;
 import android.app.Application;
 
 import com.example.mydoctor.di.MyDoctorApplication;
+import com.example.mydoctor.di.firebaseservice.FireBaseService;
 import com.example.mydoctor.di.modules.activitybuildersmodule.ActivityBuildersModule;
 import com.example.mydoctor.di.modules.appmodule.AppModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.ViewModelFactoryModule;
@@ -27,6 +28,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 public interface AppComponent extends AndroidInjector<MyDoctorApplication> {
     
     SessionManager sessionManager();
+    FireBaseService fireBaseService();
 
     @Component.Builder
     interface Builder{

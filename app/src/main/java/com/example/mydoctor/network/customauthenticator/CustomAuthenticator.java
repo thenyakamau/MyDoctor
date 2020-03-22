@@ -21,7 +21,7 @@ public class CustomAuthenticator implements Authenticator {
 
     private TokenManager tokenManager;
     private static CustomAuthenticator INSTANCE;
-    Retrofit retrofit;
+    private Retrofit retrofit;
 
 
     private CustomAuthenticator(TokenManager tokenManager, Retrofit retrofit){

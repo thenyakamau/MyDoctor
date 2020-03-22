@@ -6,6 +6,7 @@ import com.example.mydoctor.models.LoginModel;
 import io.reactivex.Flowable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -42,5 +43,11 @@ public interface API {
             @Part("password") RequestBody password,
             @Part("password confirmation") RequestBody confirmPassword,
             @Part MultipartBody.Part image
+    );
+
+    @FormUrlEncoded
+    @POST("api/saveFirebaseToken")
+    Call<ResponseBody> saveFirebaseToken(
+            @Field("token") String token
     );
 }
