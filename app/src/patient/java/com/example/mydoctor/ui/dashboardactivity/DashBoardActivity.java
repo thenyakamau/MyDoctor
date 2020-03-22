@@ -16,10 +16,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.mydoctor.R;
 import com.example.mydoctor.baseviews.BaseActivity;
 import com.example.mydoctor.di.firebaseservice.FireBaseService;
+import com.example.mydoctor.ui.fragments.chatfragment.ChatFragment;
 import com.example.mydoctor.ui.fragments.homefragment.HomeFragment;
 import com.example.mydoctor.ui.mapactivity.MapActivity;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import javax.inject.Inject;
 
@@ -39,6 +39,7 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
     FireBaseService fireBaseService;
 
     private  HomeFragment homeFragment;
+    private ChatFragment chatFragment;
 
 
     @Override
@@ -51,10 +52,12 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
         initializeToolBar();
 
         homeFragment = new HomeFragment();
+        chatFragment = new ChatFragment();
 
         _nav_viewer_dashboard.setNavigationItemSelectedListener(this);
         _nav_viewer_dashboard.setCheckedItem(R.id._dash_board_home);
 
+        AddFragment(homeFragment);
 
     }
 
@@ -82,7 +85,6 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
 
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -95,6 +97,10 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
             case R.id._dash_board_map:
                 startActivity(new Intent(DashBoardActivity.this, MapActivity.class));
                 return true;
+
+            case R.id._dash_board_message:
+                AddFragment(chatFragment);
+                return  true;
 
         }
         _draw_layout_dashboard.closeDrawer(GravityCompat.START);
@@ -109,6 +115,4 @@ public class DashBoardActivity extends BaseActivity implements NavigationView.On
         fragmentTransaction.commit();
 
     }
-
-
 }

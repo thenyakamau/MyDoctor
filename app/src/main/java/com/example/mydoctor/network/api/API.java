@@ -1,6 +1,7 @@
 package com.example.mydoctor.network.api;
 
 import com.example.mydoctor.models.AccessTokenModel;
+import com.example.mydoctor.models.DashBoardModel;
 import com.example.mydoctor.models.LoginModel;
 
 import io.reactivex.Flowable;
@@ -10,6 +11,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -18,10 +20,10 @@ public interface API {
 
 
     @FormUrlEncoded
-    @POST("api/login.php")
+    @POST("api/login")
     Flowable<AccessTokenModel> login(
 
-            @Field("email") String email,
+            @Field("username") String email,
             @Field("password") String password
 
     );
@@ -50,4 +52,7 @@ public interface API {
     Call<ResponseBody> saveFirebaseToken(
             @Field("token") String token
     );
+
+    @GET("api/dashboardCount")
+    Flowable<DashBoardModel> fetchMyPatientRecord();
 }

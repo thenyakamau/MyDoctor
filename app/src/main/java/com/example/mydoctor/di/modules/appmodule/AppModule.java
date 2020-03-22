@@ -51,7 +51,7 @@ public class AppModule {
     private static final String TAG = "ApiModule";
     private static final String HEADER_PRAGMA = "Pragma";
     private static final String HEADER_CACHE_CONTROL = "Cache-Control" ;
-    private final String BASE_URL = "https://e4c1b1fc.ngrok.io/laravelmydoctorapi/public/";//"https://"; //base url
+    private final String BASE_URL = BuildConfig.BASE_URL;//"https://"; //base url
     private static final long cacheSize = 10*1024*1024;  //10mb
 
     @Singleton

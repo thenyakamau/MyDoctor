@@ -3,6 +3,8 @@ package com.example.mydoctor.di.components.appcompoment;
 import android.app.Application;
 
 import com.example.mydoctor.di.MyDoctorApplication;
+import com.example.mydoctor.di.apierrorconverter.ApiErrorConverter;
+import com.example.mydoctor.di.createpartfromstring.CreatePartFromString;
 import com.example.mydoctor.di.firebaseservice.FireBaseService;
 import com.example.mydoctor.di.modules.activitybuildersmodule.ActivityBuildersModule;
 import com.example.mydoctor.di.modules.appmodule.AppModule;
@@ -29,6 +31,8 @@ public interface AppComponent extends AndroidInjector<MyDoctorApplication> {
     
     SessionManager sessionManager();
     FireBaseService fireBaseService();
+    ApiErrorConverter apiErrorConverter();
+    CreatePartFromString createPartFromString();
 
     @Component.Builder
     interface Builder{
