@@ -76,11 +76,9 @@ public class HomeFragment extends BaseFragment {
 
                         }
 
-
-
                         if (dashBoardModelResource.data != null) {
-                            Log.d(TAG, "subscribeObservers: "+dashBoardModelResource.data.getCountHealthRate());
 
+                            runCharts();
 
                         }
                         break;
@@ -99,6 +97,12 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
+
+    }
+
+    private void runCharts() {
+
+
 
     }
 

@@ -5,10 +5,12 @@ import com.example.mydoctor.di.modules.activitybuildersmodule.fragmentbuildermod
 import com.example.mydoctor.di.modules.apimodule.AuthApiModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.DashBoardViewModelModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.LoginViewModelModule;
+import com.example.mydoctor.di.modules.viewmodelmodule.MapViewModelModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.RegisterViewModelModule;
 import com.example.mydoctor.di.modules.viewmodelmodule.SplashActivityViewModelModule;
 import com.example.mydoctor.ui.dashboardactivity.DashBoardActivity;
 import com.example.mydoctor.ui.loginacitivity.LoginActivity;
+import com.example.mydoctor.ui.mapactivity.MapActivity;
 import com.example.mydoctor.ui.registeractivity.RegisterActivity;
 import com.example.mydoctor.ui.splashactivity.SplashActivity;
 
@@ -50,5 +52,14 @@ public abstract class ActivityBuildersModule {
             }
     )
     abstract DashBoardActivity contributeDashBoardActivity();
+
+    @ContributesAndroidInjector(
+            modules = {
+                    MapViewModelModule.class,
+                    AuthApiModule.class,
+            }
+    )
+    abstract MapActivity contributeMapActivity();
+
 
 }

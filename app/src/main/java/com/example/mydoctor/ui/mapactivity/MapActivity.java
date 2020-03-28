@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,6 +20,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.mydoctor.R;
+import com.example.mydoctor.baseviews.BaseActivity;
+import com.example.mydoctor.di.viewmodels.ViewModelProviderFactory;
 import com.example.mydoctor.ui.dashboardactivity.DashBoardActivity;
 import com.example.mydoctor.utils.ViewSnackBar;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,15 +36,20 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.tasks.Task;
 import com.google.maps.GeoApiContext;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends BaseActivity implements OnMapReadyCallback {
 
     private static final String TAG = "MapActivity";
 
     @BindView(R.id._toolbar_dashboard)
     Toolbar _toolbar_dashboard;
+
+    @Inject
+    ViewModelProviderFactory providerFactory;
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     public static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -58,6 +66,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Polyline currentPolyline;
     String parentActivity;
     private ViewSnackBar viewSnackBar;
+    private MapViewModel mapViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +83,41 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         }
 
+        mapViewModel = ViewModelProviders.of(this, providerFactory).get(MapViewModel.class);
+
+        subscribeObservers();
+
         ButterKnife.bind(this);
+    }
+
+    private void subscribeObservers(){
+        mapViewModel.observeUserLocation().observe(this, apiSuccessModelResource -> {
+
+            if (apiSuccessModelResource != null) {
+
+                switch (apiSuccessModelResource.status) {
+
+                    case LOADING:
+
+                        break;
+
+                    case SUCCESS:
+
+                        if (apiSuccessModelResource.data != null) {
+
+                        }
+                        break;
+
+
+                    case ERROR:
+
+                        viewSnackBar.viewMySnack(apiSuccessModelResource.message, R.color.blue);
+
+                }
+
+            }
+
+        });
     }
 
     @Override
@@ -117,6 +160,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         Log.d(TAG, "getDeviceLocation: " + "Lang" + userLang + "Long" + userLong);
 
                         moveCamera(new LatLng(location.getLatitude(), location.getLongitude()), DEFAULT_ZOOM);
+
+                        mapViewModel.saveUserLocation(userLang, userLong);
+
                     }else {
 
                         Log.d(TAG, "getDeviceLocation: location is null");

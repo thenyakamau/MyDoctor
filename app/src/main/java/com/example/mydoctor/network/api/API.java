@@ -1,6 +1,7 @@
 package com.example.mydoctor.network.api;
 
 import com.example.mydoctor.models.AccessTokenModel;
+import com.example.mydoctor.models.ApiSuccessModel;
 import com.example.mydoctor.models.DashBoardModel;
 import com.example.mydoctor.models.LoginModel;
 
@@ -55,4 +56,11 @@ public interface API {
 
     @GET("api/dashboardCount")
     Flowable<DashBoardModel> fetchMyPatientRecord();
+
+    @FormUrlEncoded
+    @POST("")
+    Flowable<ApiSuccessModel> addMuserLocation(
+            @Field("latitude") double latitude,
+            @Field("longitude") double longitude
+    );
 }
