@@ -58,7 +58,7 @@ public interface API {
     Flowable<DashBoardModel> fetchMyPatientRecord();
 
     @FormUrlEncoded
-    @POST("")
+    @POST("api/saveUserLocation")
     Flowable<ApiSuccessModel> addMuserLocation(
             @Field("latitude") double latitude,
             @Field("longitude") double longitude

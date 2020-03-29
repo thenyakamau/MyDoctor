@@ -32,6 +32,7 @@ public class FireBaseService extends FirebaseMessagingService {
     @Inject
     public FireBaseService(Retrofit retrofit) {
         this.retrofit = retrofit;
+        Log.d(TAG, "FireBaseService: initiliazed");
     }
 
     @Override
